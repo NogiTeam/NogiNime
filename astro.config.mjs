@@ -1,4 +1,4 @@
-// @ts-check
+ù// @ts-check
 import { defineConfig, envField } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import node from "@astrojs/node";
@@ -19,8 +19,6 @@ export default defineConfig({
   output: "server",
 
   adapter: vercel(),
-  webAnalytics: {
-      enabled: true,
 
   integrations: [tailwind()],
 
