@@ -1,4 +1,4 @@
-import { API_URL } from "astro:env/server";
+ import { API_URL } from "astro:env/server";
 
 interface AnimeConfig {
   wajiknime: {
@@ -26,7 +26,7 @@ const animeConfig: AnimeConfig = {
 
   wajikAnimeApi: {
     apiUrl: API_URL,
-    baseUrlPath: "/samehadaku",
+    baseUrlPath: "/otakudesu",
   },
 };
 
