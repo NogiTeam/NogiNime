@@ -4,6 +4,8 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 
+import robotsTxt from "astro-robots-txt";
+
 // https://astro.build/config
 export default defineConfig({
   env: {
@@ -21,16 +23,13 @@ export default defineConfig({
 
   adapter: vercel(),
 
-  integrations: [
-    tailwind(),
-    sitemap({
-      filter: (page) =>
-        page !== 'https://www.noginime.com/genres' &&
-        page !== 'https://www.noginime.com/schedule' &&
-        page !== 'https://www.noginime.com/completed' &&
-        page !== 'https://www.noginime.com/ongoing',
-    }),
-  ],
+  integrations: [tailwind(), sitemap({
+    filter: (page) =>
+      page !== 'https://www.noginime.com/genres' &&
+      page !== 'https://www.noginime.com/schedule' &&
+      page !== 'https://www.noginime.com/completed' &&
+      page !== 'https://www.noginime.com/ongoing',
+  }), robotsTxt()],
 
   server: {
     host: "0.0.0.0",
