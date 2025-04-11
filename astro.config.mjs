@@ -9,21 +9,23 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   env: {
     schema: {
-      site: 'https://example.com',
+      site: 'https://noginime.com',
   integrations: [
     sitemap({
-      filter: (page) => {
-        const allowedPages = ['/', '/ongoing', '/completed', 'anime'];
-        return allowedPages.includes(page);
-      }
-    })
-  ]
+      filter: (page) =>
+        page !== 'https://www.noginime.com/genres' &&
+        page !== 'https://www.noginime.com/schedule' &&
+        page !== 'https://www.noginime.com/completed' &&
+        page !== 'https://www.noginime.com/ongoing',
+    }),
+  ],
       API_URL: envField.string({
         access: "public",
         context: "server",
       }),
     },
   },
+}),
 
   output: "server",
 
