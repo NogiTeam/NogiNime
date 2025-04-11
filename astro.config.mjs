@@ -1,16 +1,28 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import node from "@astrojs/node";
-import sitemap from '@astrojs/sitemap';
+import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
   env: {
     schema: {
-      site: 'https://noginime.com',
+      API_URL: envField.string({
+        access: "public",
+        context: "server",
+      }),
+    },
+  },
+
+  site: 'https://noginime.com',
+
+  output: "server",
+
+  adapter: vercel(),
+
   integrations: [
+    tailwind(),
     sitemap({
       filter: (page) =>
         page !== 'https://www.noginime.com/genres' &&
@@ -19,19 +31,6 @@ export default defineConfig({
         page !== 'https://www.noginime.com/ongoing',
     }),
   ],
-      API_URL: envField.string({
-        access: "public",
-        context: "server",
-      }),
-    },
-  },
-}),
-
-  output: "server",
-
-  adapter: vercel(),
-
-  integrations: [tailwind()],
 
   server: {
     host: "0.0.0.0",
