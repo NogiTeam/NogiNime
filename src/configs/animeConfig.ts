@@ -26,7 +26,7 @@ const animeConfig: AnimeConfig = {
 
   wajikAnimeApi: {
     apiUrl: API_URL,
-    baseUrlPath: "/otakudesu",
+    baseUrlPath: "/samehadaku",
   },
 };
 
